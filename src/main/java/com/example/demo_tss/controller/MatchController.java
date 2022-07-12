@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/match")
 
@@ -45,9 +45,11 @@ public class MatchController {
     }
     @GetMapping(produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getMatches(
+//            Pageable pageable
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "7") int size,
             @RequestParam(defaultValue = "id,desc") String[] sort) {
+
         try {
             List<Sort.Order> orders = new ArrayList<Sort.Order>();
             if (sort[0].contains(",")) {

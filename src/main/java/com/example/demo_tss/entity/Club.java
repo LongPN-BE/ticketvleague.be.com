@@ -18,7 +18,6 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Integer stadiumId;
-
     private String clubName;
     private String img;
     private String country;

@@ -30,10 +30,10 @@ public class TicketService {
     public Ticket getTicketByID(int id){
         return repository.findById(id).orElse(null);
     }
-    public List<Ticket> getTicketByTicketTypeId(int ticketTypeId){
-
-        return repository.findByTicketTypeId(ticketTypeId);
-    }
+//    public List<Ticket> getTicketByTicketTypeId(int ticketTypeId){
+//
+//        return repository.findByTicketTypeId(ticketTypeId);
+//    }
     public List<Ticket> getTicketByMatchId(int ticketTypeId){
 
         return repository.findByMatchId(ticketTypeId);
@@ -44,8 +44,19 @@ public class TicketService {
     }
     public Ticket updateTicket(Ticket ticket){
         Ticket existingTicket= repository.findById(ticket.getId()).orElse(null);
-        existingTicket.setTicketTypeId(ticket.getTicketTypeId());
         existingTicket.setMatchId(ticket.getMatchId());
+        existingTicket.setAreaId(ticket.getAreaId());
+        existingTicket.setPrice(ticket.getPrice());
+        existingTicket.setAmount(ticket.getAmount());
         return repository.save(existingTicket);
+    }
+
+    public int getAmountByTicketId(int ticketId){
+        int amount = repository.getAmountByTicketId(ticketId);
+        return amount;
+    }
+
+    public void updateAmountTicketId(int newAmount, int ticketId){
+         repository.updateAmountTicketId(newAmount, ticketId);
     }
 }
